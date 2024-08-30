@@ -1,0 +1,47 @@
+import smtplib
+import base64
+from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
+from email.mime.multipart import MIMEMultipart
+from email.mime.application import MIMEApplication
+from email.header import Header
+
+#发件服务器
+fr_mailserv='smtp.exmail.qq.com'
+#发件端口
+fr_mailport=465
+#发件账户地址
+fr_mailaddr='zijie.oy@bupt.edu.cn'
+#发件账户密码
+fr_mailpass='20042004323oySTU'
+#发件人昵称
+fr_nickname='你爹'
+#收件方信息
+to_mailaddr='zbf@bupt.edu.cn'
+
+#构造文本邮件
+subject = '来信收悉'
+text_info ='我是你爹'
+
+my_msg = MIMEText(text_info,  #正文内容
+                'plain',    #正文内容类型 plain：纯文本
+                'utf-8'     #编码方式
+                )
+
+#邮件头Header（QQ邮箱标准 RFC5322, RFC2047, RFC822）
+my_msg['From'] = f'=?UTF-8?B?{base64.b64encode(fr_nickname.encode()).decode()}?= <{fr_mailaddr}>'
+my_msg['To'] = Header(to_mailaddr)
+my_msg['Subject'] = Header(subject,'utf-8')
+
+try:
+    #连接服务器地址与端口
+    smtp_my=smtplib.SMTP_SSL(fr_mailserv)
+    smtp_my.connect(fr_mailserv, fr_mailport)
+    #登录服务器
+    smtp_my.login(fr_mailaddr, fr_mailpass)
+    print("邮件发送成功")
+except smtplib.SMTPException:
+    print("邮件发送失败")
+finally:
+    #关闭连接
+    smtp_my.quit()

@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% block title %}
+注册 - 小邮分析
+{% endblock %}
+{% block head %}
+    <style>
+        .register-container {
+            width: 300px;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .register-container h2 {
+            text-align: center;
+        }
+        .register-container label {
+            display: block;
+            margin-top: 10px;
+        }
+        .register-container input[type="text"],
+        .register-container input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+        .register-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        .register-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script>
+        function validateForm(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            // Username validation: allow letters, numbers, underscores, and Chinese characters
+            const usernameRegex = /^[a-zA-Z0-9_\u4e00-\u9fa5]+$/;
+            if (!usernameRegex.test(username)) {
+                alert('用户名只能包含字母、数字、下划线和汉字。');
+                return;
+            }
+
+            // Password length validation
+            if (password.length < 8 || password.length > 32) {
+                alert('密码长度必须在8到32个字符之间。');
+                return;
+            }
+
+            // Confirm password validation
+            if (password !== confirmPassword) {
+                alert('两次输入的密码不一致。');
+                return;
+            }
+
+            const form = document.getElementById('registerForm');
+            const formData = new FormData(form);
+
+            fetch('/login/reg', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message === '注册成功，请登录!') {
+                    alert(data.message);
+                    setTimeout(() => {
+                        window.location.href = '/';
+                    }, 2000); // Redirect to home after 2 seconds
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row mt-4">
+        <div class="col"></div>
+        <div class="col">
+            <h2>注册</h2>
+            <form id="registerForm" onsubmit="validateForm(event)">
+                <div class="form-group">
+                        <label for="exampleInputEmail1e">用户名:</label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="仅支持汉字、字母、数字组合" required>
+                </div>       
+                <div class="form-group">
+                        <label for="exampleInputPassword1">密码:</label>
+                        <input type="password" id="password" class="form-control" name="password" placeholder="8-32位 支持数字、字母、下划线" required>
+                </div>
+                <div class="col"></div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">确认密码:</label>
+                    <input type="password" id="confirm-password" class="form-control" name="password_confirm" placeholder="请保持两次输入密码一致" required>
+                </div>
+            <div class="col"></div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">注册</button>
+                </div>
+                <div class="form-group">
+                    <p style="float: right;">已有账户？点此<a href="/login">登录</a></p>
+                </div>
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+{% endblock %}

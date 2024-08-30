@@ -1,0 +1,61 @@
+from flask import Flask, jsonify, render_template
+import json
+import pymysql
+#from mysql.connector import pooling
+
+'''pool = pooling.MySQLConnectionPool(
+    pool_name="mypool",
+    host = "localhost",
+    port = 3306,
+    user = "root",
+    password = "",
+    database = "test",
+    pool_reset_session=True,
+    autocommit=True,
+)'''
+connection = pymysql.connect(host='localhost',
+                             user='root',
+                             password='123456',
+                             cursorclass=pymysql.cursors.DictCursor)
+
+app = Flask(__name__)
+
+@app.route("/data")
+def get_data():
+    conn = pool.get_connection()
+    curor = conn.cursor()
+    curor.execute("SELECT * FROM stu LIMIT 10;")
+    result = curor.fetchall()
+    print(result)
+    curor.close()
+    conn.close()
+    return jsonify(result)
+
+@app.route("/data2")
+def get_data2():
+    conn = pool.get_connection()
+    curor = conn.cursor()
+    curor.execute("SELECT * FROM stu WHERE name = 's';")
+    result = curor.fetchall()
+    print(result)
+    curor.close()
+    conn.close()
+    return jsonify(result)
+
+@app.route("/data3")
+def get_data3():
+    conn = pool.get_connection()
+    curor = conn.cursor()
+    curor.execute("SELECT * FROM stu LIMIT 10;")
+    result = curor.fetchall()
+    print(result)
+    curor.close()
+    conn.close()
+    return jsonify(result)
+
+@app.route("/")
+def hello_world():
+    return render_template('tmp.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)

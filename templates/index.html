@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}
+首页 - 邮件管理系统
+{% endblock %}
+
+{% block head %}
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    .main-container {
+        margin-top: 50px;
+    }
+    .mail-table {
+        margin-top: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container main-container">
+    <div class="row">
+        <div class="col-md-3">
+            <h2>用户信息</h2>
+            <p>用户名: {{ user.username }}</p>
+            <p>加入时间: {{ user.join_time.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+            <p>邮件数量: {{ mail_count }}</p>
+            <p>收件服务器: {{ user.recv_serv }}</p>
+            <p>发件服务器: {{ user.send_serv }}</p>
+        </div>
+        <div class="col-md-9">
+            <h2>最新邮件</h2>
+            <table class="table table-bordered mail-table">
+                <thead>
+                    <tr>
+                        <th>时间</th>
+                        <th>发件地址</th>
+                        <th>主题</th>
+                        <th>概要</th>
+                        <th>分类</th>
+                        <th>状态</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for mail in mails %}
+                    <tr>
+                        <td>{{ mail.time }}</td>
+                        <td>{{ mail.send_addr }}</td>
+                        <td>{{ mail.subject }}</td>
+                        <td>{{ mail.sum }}</td>
+                        <td>{{ mail.messagecategory }}</td>
+                        <td>{% if mail.state == '垃圾' %}
+                          <a href="#" class="badge badge-warning">垃圾</a>
+                          {% else %}
+                          <a href="#" class="badge badge-success">正常</a>
+                          {% endif %}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+{% endblock %}

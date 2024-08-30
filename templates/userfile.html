@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+{% block title %}
+登录 - 小邮分析
+{% endblock %}
+{% block head %}
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .login-container {
+            width: 300px;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .login-container h2 {
+            text-align: center;
+        }
+        .login-container label {
+            display: block;
+            margin-top: 10px;
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+        .login-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        .login-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="row mt-4">
+        <div class="col"></div>
+        <div class="col">
+            <form id="configForm" method="POST" action="{{ url_for('userfile.userfile') }}">
+                <h2>pop3收件配置</h2>
+                <div class="form-group">
+                        <label for="recv_serv">收件服务器</label>
+                        <input type="text" class="form-control" id="recv_serv" name="recv_serv" value="{{user.recv_serv}}">
+                </div>       
+                <div class="form-group">
+                        <label for="recv_port">收件端口:</label>
+                        <input type="text" id="recv_port" class="form-control" name="recv_port" value="{{user.recv_port}}">
+                </div>
+                <div class="form-group">
+                        <label for="recv_addr">收件地址:</label>
+                        <input type="email" id="recv_addr" class="form-control" name="recv_addr" value="{{user.recv_addr}}">
+                </div>
+                <div class="form-group">
+                        <label for="recv_pwd">收件口令/密码:</label>
+                        <input type="password" id="recv_pwd" class="form-control" name="recv_pwd" value="{{user.recv_pwd}}">
+                </div>
+                <h2>smtp发件配置</h2>
+                <div class="form-group">
+                        <label for="send_serv">发件服务器</label>
+                        <input type="text" class="form-control" id="send_serv" name="send_serv" value="{{user.send_serv}}">
+                </div>       
+                <div class="form-group">
+                        <label for="send_port">发件端口:</label>
+                        <input type="text" id="send_port" class="form-control" name="send_port" value="{{user.send_port}}">
+                </div>
+                <div class="form-group">
+                        <label for="send_addr">发件地址:</label>
+                        <input type="email" id="send_addr" class="form-control" name="send_addr" value="{{user.send_addr}}">
+                </div>
+                <div class="form-group">
+                        <label for="send_pwd">发件口令/密码:</label>
+                        <input type="password" id="send_pwd" class="form-control" name="send_pwd" value="{{user.send_pwd}}">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">保存配置</button>
+                </div>
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="responseModal" tabindex="-1" role="dialog" aria-labelledby="responseModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="responseModalLabel">返回信息</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="关闭">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBodyContent">
+                <!-- 返回信息将在此显示 -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+    document.getElementById('configForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // 防止表单默认提交
+        
+        var formData = new FormData(this);
+        
+        fetch('{{ url_for("userfile.userfile") }}', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('modalBodyContent').textContent = JSON.stringify(data, null, 2);
+            $('#responseModal').modal('show');
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+</script>
+{% endblock %}

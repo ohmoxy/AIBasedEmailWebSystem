@@ -1,0 +1,105 @@
+<style>
+    .eml-w {
+        font-size: 16px !important;
+        font-family: 'PingFang SC';
+        font-style: normal;
+        font-weight: 400;
+    }
+
+    @media (max-width: 760px) {
+        .eml-w-sys-layout {
+            border-radius: none !important;
+            box-shadow: none !important;
+            margin: 0 !important;
+        }
+
+        .eml-w-sys-layout .eml-w-sys-line {
+            display: none;
+        }
+
+        .eml-w-sys-layout .eml-w-sys-logo img {
+            margin-right: 30px !important;
+        }
+
+        .eml-w-sys-layout .eml-w-sys-content {
+            padding: 0 16px !important;
+        }
+
+        .eml-w-sys-layout .eml-w-txt-list-wrap {
+            padding: 16px !important;
+        }
+
+        .eml-w-sys-layout .eml-w-sys-footer {
+            padding-left: 30px !important;
+        }
+    }
+</style>
+<div class="eml-w eml-w-sys-layout"
+     style="background: #fff; box-shadow: 0 2px 8px 0 rgba(0,0,0,.2); border-radius: 4px; margin: 50px auto; max-width: 700px; overflow: hidden;  color: #2b2b2b;  line-height: 1.75;">
+    <div>
+        <div class="eml-w-sys-line" style="position: relative; height: 3px; overflow: hidden;">
+            <div class="eml-w-sys-line-left"
+                 style="display: block; margin-right: 81px; background: #2984ef; height: 3px;"></div>
+            <div class="eml-w-sys-line-right"
+                 style="position: absolute; right: 0; top: 0; width: 80px; height: 3px; background: #8bd5ff;"></div>
+        </div>
+        <div class="eml-w-sys-logo" style="text-align: right;"><img
+                src="https://rescdn.qqmail.com/node/wwqy/qymng/style/images/sass/independent/welcome_eml_logo.png"
+                style="display: inline-block; margin: 30px 50px 0 0; width: 34px; height: 24px;" width="34" height="24">
+        </div>
+    </div>
+    <div class="eml-w-sys-content"
+         style="position: relative; padding: 20px 50px 0; min-height: 216px; word-break: break-all;"><!---->
+        <div class="dragArea gen-group-list">
+            <div class="gen-item" draggable="false">
+                <div class="eml-w-item-block" style="margin-bottom: 10px; padding: 0px;">
+                    <div class="eml-w-phase-bold-16"
+                         style="font-size: 16px; color: #2b2b2b; font-weight: 500; line-height: 1.75;">你好，欧阳子杰
+                    </div>
+                </div><!----></div>
+            <div class="gen-item" draggable="false">
+                <div class="eml-w-item-block" style="margin-bottom: 10px; padding: 0px;">
+                    <div class="eml-w-phase-normal-16" style="color: #2b2b2b; font-size: 16px; line-height: 1.75;"><p
+                            style="margin: 0; padding: 0;">系统监测到你的邮箱账号 2022210330@bupt.cn
+                        通过应用“chrome”获取了邮箱访问权限</p></div>
+                </div><!----></div>
+            <div class="gen-item" draggable="false">
+                <div class="eml-w-item-block" style="margin-bottom: 10px; padding: 0px;">
+                    <div class="eml-w-txt-list-wrap"
+                         style="background: #f9fafc; padding: 20px 30px;box-sizing: border-box;">
+                        <div class="eml-w-list-item"
+                             style="position: relative; margin-bottom: 16px; line-height: 20px;"><p
+                                class="eml-w-list-label"
+                                style="padding: 0; position: absolute; width: 70px; color: #787878; margin: 0;">登录地点</p>
+                            <p class="eml-w-list-cont"
+                               style="padding: 0; display: inline-block; margin: 0 0 0 75px; color: rgb(43, 43, 43);">
+                                北京市 北京市</p></div>
+                        <div class="eml-w-list-item"
+                             style="position: relative; margin-bottom: 16px;  line-height: 20px;"><p
+                                class="eml-w-list-label"
+                                style="padding: 0; position: absolute; width: 70px; color: #787878; margin: 0;">登录时间</p>
+                            <p class="eml-w-list-cont"
+                               style="padding: 0; display: inline-block; margin: 0 0 0 75px; color: rgb(43, 43, 43);">
+                                2024-05-03 02:37 +08:00</p></div>
+                        <div class="eml-w-list-item"
+                             style="position: relative; margin-bottom: 16px;  line-height: 20px;"><p
+                                class="eml-w-list-label"
+                                style="padding: 0; position: absolute; width: 70px; color: #787878; margin: 0;">设备名称</p>
+                            <p class="eml-w-list-cont"
+                               style="padding: 0; display: inline-block; margin: 0 0 0 75px; color: rgb(43, 43, 43);">
+                                web</p></div>
+                        <div class="eml-w-list-item" style="position: relative;  line-height: 20px; margin-bottom: 0;">
+                            <p class="eml-w-list-label"
+                               style="padding: 0; position: absolute; width: 70px; color: #787878; margin: 0;">IP地址</p>
+                            <p class="eml-w-list-cont"
+                               style="padding: 0; display: inline-block; margin: 0 0 0 75px; color: rgb(43, 43, 43);">
+                                106.39.130.10</p></div>
+                    </div>
+                </div><!----></div>
+        </div>
+    </div>
+    <div class="eml-w-sys-footer"
+         style="font-weight: 500; font-size: 12px; color: #bebebe; letter-spacing: .5px; padding: 0 0 30px 50px; margin-top: 60px;">
+        企业微信团队
+    </div>
+</div>

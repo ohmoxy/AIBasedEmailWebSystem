@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module forms</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title">forms</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:d%3A%5Cselffile%5C2024%5C2024bupt%5C2024pycode%5C240503smtp%5Cforms.py">d:\selffile\2024\2024bupt\2024pycode\240503smtp\forms.py</a></td></tr></table>
+    <p></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="wtforms.html">wtforms</a><br>
+</td><td class="multicolumn"></td><td class="multicolumn"></td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor index-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Classes</strong></td></tr>
+    
+<tr><td class="decor index-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl>
+<dt class="heading-text"><a href="wtforms.form.html#Form">wtforms.form.Form</a>(<a href="wtforms.form.html#BaseForm">wtforms.form.BaseForm</a>)
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="forms.html#RegisterForm">RegisterForm</a>
+</dt></dl>
+</dd>
+</dl>
+ <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="RegisterForm">class <strong>RegisterForm</strong></a>(<a href="wtforms.form.html#Form">wtforms.form.Form</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#RegisterForm">RegisterForm</a>(*args,&nbsp;**kwargs)<br>
+&nbsp;<br>
+<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="forms.html#RegisterForm">RegisterForm</a></dd>
+<dd><a href="wtforms.form.html#Form">wtforms.form.Form</a></dd>
+<dd><a href="wtforms.form.html#BaseForm">wtforms.form.BaseForm</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="RegisterForm-validate_username"><strong>validate_username</strong></a>(self, field)</dt><dd><span class="code">#用户名是否已注册</span></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>password</strong> = &lt;UnboundField(StringField, (), {'validators': [&lt;...lidators.Length object at 0x000001AF04C0E330&gt;]})&gt;</dl>
+
+<dl><dt><strong>password_confirm</strong> = &lt;UnboundField(StringField, (), {'validators': [&lt;...idators.EqualTo object at 0x000001AF049A7A70&gt;]})&gt;</dl>
+
+<dl><dt><strong>username</strong> = &lt;UnboundField(StringField, (), {'validators': [&lt;...lidators.Length object at 0x000001AF01417C80&gt;]})&gt;</dl>
+
+<hr>
+Methods inherited from <a href="wtforms.form.html#Form">wtforms.form.Form</a>:<br>
+<dl><dt><a name="RegisterForm-__delattr__"><strong>__delattr__</strong></a>(self, name)</dt><dd><span class="code">Implement&nbsp;delattr(self,&nbsp;name).</span></dd></dl>
+
+<dl><dt><a name="RegisterForm-__delitem__"><strong>__delitem__</strong></a>(self, name)</dt><dd><span class="code">Remove&nbsp;a&nbsp;field&nbsp;from&nbsp;this&nbsp;form.</span></dd></dl>
+
+<dl><dt><a name="RegisterForm-__init__"><strong>__init__</strong></a>(self, formdata=None, obj=None, prefix='', data=None, meta=None, **kwargs)</dt><dd><span class="code">:param&nbsp;formdata:&nbsp;Input&nbsp;data&nbsp;coming&nbsp;from&nbsp;the&nbsp;client,&nbsp;usually<br>
+&nbsp;&nbsp;&nbsp;&nbsp;``request.form``&nbsp;or&nbsp;equivalent.&nbsp;Should&nbsp;provide&nbsp;a&nbsp;"multi<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dict"&nbsp;interface&nbsp;to&nbsp;get&nbsp;a&nbsp;list&nbsp;of&nbsp;values&nbsp;for&nbsp;a&nbsp;given&nbsp;key,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;such&nbsp;as&nbsp;what&nbsp;Werkzeug,&nbsp;Django,&nbsp;and&nbsp;WebOb&nbsp;provide.<br>
+:param&nbsp;obj:&nbsp;Take&nbsp;existing&nbsp;data&nbsp;from&nbsp;attributes&nbsp;on&nbsp;this&nbsp;object<br>
+&nbsp;&nbsp;&nbsp;&nbsp;matching&nbsp;form&nbsp;field&nbsp;attributes.&nbsp;Only&nbsp;used&nbsp;if&nbsp;``formdata``&nbsp;is<br>
+&nbsp;&nbsp;&nbsp;&nbsp;not&nbsp;passed.<br>
+:param&nbsp;prefix:&nbsp;If&nbsp;provided,&nbsp;all&nbsp;fields&nbsp;will&nbsp;have&nbsp;their&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;prefixed&nbsp;with&nbsp;the&nbsp;value.&nbsp;This&nbsp;is&nbsp;for&nbsp;distinguishing&nbsp;multiple<br>
+&nbsp;&nbsp;&nbsp;&nbsp;forms&nbsp;on&nbsp;a&nbsp;single&nbsp;page.&nbsp;This&nbsp;only&nbsp;affects&nbsp;the&nbsp;HTML&nbsp;name&nbsp;for<br>
+&nbsp;&nbsp;&nbsp;&nbsp;matching&nbsp;input&nbsp;data,&nbsp;not&nbsp;the&nbsp;Python&nbsp;name&nbsp;for&nbsp;matching<br>
+&nbsp;&nbsp;&nbsp;&nbsp;existing&nbsp;data.<br>
+:param&nbsp;data:&nbsp;Take&nbsp;existing&nbsp;data&nbsp;from&nbsp;keys&nbsp;in&nbsp;this&nbsp;dict&nbsp;matching<br>
+&nbsp;&nbsp;&nbsp;&nbsp;form&nbsp;field&nbsp;attributes.&nbsp;``obj``&nbsp;takes&nbsp;precedence&nbsp;if&nbsp;it&nbsp;also<br>
+&nbsp;&nbsp;&nbsp;&nbsp;has&nbsp;a&nbsp;matching&nbsp;attribute.&nbsp;Only&nbsp;used&nbsp;if&nbsp;``formdata``&nbsp;is&nbsp;not<br>
+&nbsp;&nbsp;&nbsp;&nbsp;passed.<br>
+:param&nbsp;meta:&nbsp;A&nbsp;dict&nbsp;of&nbsp;attributes&nbsp;to&nbsp;override&nbsp;on&nbsp;this&nbsp;form's<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:attr:`meta`&nbsp;instance.<br>
+:param&nbsp;extra_filters:&nbsp;A&nbsp;dict&nbsp;mapping&nbsp;field&nbsp;attribute&nbsp;names&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;lists&nbsp;of&nbsp;extra&nbsp;filter&nbsp;functions&nbsp;to&nbsp;run.&nbsp;Extra&nbsp;filters&nbsp;run<br>
+&nbsp;&nbsp;&nbsp;&nbsp;after&nbsp;filters&nbsp;passed&nbsp;when&nbsp;creating&nbsp;the&nbsp;field.&nbsp;If&nbsp;the&nbsp;form<br>
+&nbsp;&nbsp;&nbsp;&nbsp;has&nbsp;``filter_&lt;fieldname&gt;``,&nbsp;it&nbsp;is&nbsp;the&nbsp;last&nbsp;extra&nbsp;filter.<br>
+:param&nbsp;kwargs:&nbsp;Merged&nbsp;with&nbsp;``data``&nbsp;to&nbsp;allow&nbsp;passing&nbsp;existing<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;as&nbsp;parameters.&nbsp;Overwrites&nbsp;any&nbsp;duplicate&nbsp;keys&nbsp;in<br>
+&nbsp;&nbsp;&nbsp;&nbsp;``data``.&nbsp;Only&nbsp;used&nbsp;if&nbsp;``formdata``&nbsp;is&nbsp;not&nbsp;passed.</span></dd></dl>
+
+<dl><dt><a name="RegisterForm-__setitem__"><strong>__setitem__</strong></a>(self, name, value)</dt><dd><span class="code">Bind&nbsp;a&nbsp;field&nbsp;to&nbsp;this&nbsp;form.</span></dd></dl>
+
+<dl><dt><a name="RegisterForm-validate"><strong>validate</strong></a>(self, extra_validators=None)</dt><dd><span class="code">Validate&nbsp;the&nbsp;form&nbsp;by&nbsp;calling&nbsp;``validate``&nbsp;on&nbsp;each&nbsp;field.<br>
+Returns&nbsp;``True``&nbsp;if&nbsp;validation&nbsp;passes.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;form&nbsp;defines&nbsp;a&nbsp;``validate_&lt;fieldname&gt;``&nbsp;method,&nbsp;it&nbsp;is<br>
+appended&nbsp;as&nbsp;an&nbsp;extra&nbsp;validator&nbsp;for&nbsp;the&nbsp;field's&nbsp;``validate``.<br>
+&nbsp;<br>
+:param&nbsp;extra_validators:&nbsp;A&nbsp;dict&nbsp;mapping&nbsp;field&nbsp;names&nbsp;to&nbsp;lists&nbsp;of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;extra&nbsp;validator&nbsp;methods&nbsp;to&nbsp;run.&nbsp;Extra&nbsp;validators&nbsp;run&nbsp;after<br>
+&nbsp;&nbsp;&nbsp;&nbsp;validators&nbsp;passed&nbsp;when&nbsp;creating&nbsp;the&nbsp;field.&nbsp;If&nbsp;the&nbsp;form&nbsp;has<br>
+&nbsp;&nbsp;&nbsp;&nbsp;``validate_&lt;fieldname&gt;``,&nbsp;it&nbsp;is&nbsp;the&nbsp;last&nbsp;extra&nbsp;validator.</span></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="wtforms.form.html#Form">wtforms.form.Form</a>:<br>
+<dl><dt><strong>Meta</strong> = &lt;class 'wtforms.meta.DefaultMeta'&gt;<dd><span class="code">This&nbsp;is&nbsp;the&nbsp;default&nbsp;Meta&nbsp;class&nbsp;which&nbsp;defines&nbsp;all&nbsp;the&nbsp;default&nbsp;values&nbsp;and<br>
+therefore&nbsp;also&nbsp;the&nbsp;'API'&nbsp;of&nbsp;the&nbsp;class&nbsp;Meta&nbsp;interface.</span></dl>
+
+<hr>
+Methods inherited from <a href="wtforms.form.html#BaseForm">wtforms.form.BaseForm</a>:<br>
+<dl><dt><a name="RegisterForm-__contains__"><strong>__contains__</strong></a>(self, name)</dt><dd><span class="code">Returns&nbsp;`True`&nbsp;if&nbsp;the&nbsp;named&nbsp;field&nbsp;is&nbsp;a&nbsp;member&nbsp;of&nbsp;this&nbsp;form.</span></dd></dl>
+
+<dl><dt><a name="RegisterForm-__getitem__"><strong>__getitem__</strong></a>(self, name)</dt><dd><span class="code">Dict-style&nbsp;access&nbsp;to&nbsp;this&nbsp;form's&nbsp;fields.</span></dd></dl>
+
+<dl><dt><a name="RegisterForm-__iter__"><strong>__iter__</strong></a>(self)</dt><dd><span class="code">Iterate&nbsp;form&nbsp;fields&nbsp;in&nbsp;creation&nbsp;order.</span></dd></dl>
+
+<dl><dt><a name="RegisterForm-populate_obj"><strong>populate_obj</strong></a>(self, obj)</dt><dd><span class="code">Populates&nbsp;the&nbsp;attributes&nbsp;of&nbsp;the&nbsp;passed&nbsp;`obj`&nbsp;with&nbsp;data&nbsp;from&nbsp;the&nbsp;form's<br>
+fields.<br>
+&nbsp;<br>
+:note:&nbsp;This&nbsp;is&nbsp;a&nbsp;destructive&nbsp;operation;&nbsp;Any&nbsp;attribute&nbsp;with&nbsp;the&nbsp;same&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;as&nbsp;a&nbsp;field&nbsp;will&nbsp;be&nbsp;overridden.&nbsp;Use&nbsp;with&nbsp;caution.</span></dd></dl>
+
+<dl><dt><a name="RegisterForm-process"><strong>process</strong></a>(self, formdata=None, obj=None, data=None, extra_filters=None, **kwargs)</dt><dd><span class="code">Process&nbsp;default&nbsp;and&nbsp;input&nbsp;data&nbsp;with&nbsp;each&nbsp;field.<br>
+&nbsp;<br>
+:param&nbsp;formdata:&nbsp;Input&nbsp;data&nbsp;coming&nbsp;from&nbsp;the&nbsp;client,&nbsp;usually<br>
+&nbsp;&nbsp;&nbsp;&nbsp;``request.form``&nbsp;or&nbsp;equivalent.&nbsp;Should&nbsp;provide&nbsp;a&nbsp;"multi<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dict"&nbsp;interface&nbsp;to&nbsp;get&nbsp;a&nbsp;list&nbsp;of&nbsp;values&nbsp;for&nbsp;a&nbsp;given&nbsp;key,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;such&nbsp;as&nbsp;what&nbsp;Werkzeug,&nbsp;Django,&nbsp;and&nbsp;WebOb&nbsp;provide.<br>
+:param&nbsp;obj:&nbsp;Take&nbsp;existing&nbsp;data&nbsp;from&nbsp;attributes&nbsp;on&nbsp;this&nbsp;object<br>
+&nbsp;&nbsp;&nbsp;&nbsp;matching&nbsp;form&nbsp;field&nbsp;attributes.&nbsp;Only&nbsp;used&nbsp;if&nbsp;``formdata``&nbsp;is<br>
+&nbsp;&nbsp;&nbsp;&nbsp;not&nbsp;passed.<br>
+:param&nbsp;data:&nbsp;Take&nbsp;existing&nbsp;data&nbsp;from&nbsp;keys&nbsp;in&nbsp;this&nbsp;dict&nbsp;matching<br>
+&nbsp;&nbsp;&nbsp;&nbsp;form&nbsp;field&nbsp;attributes.&nbsp;``obj``&nbsp;takes&nbsp;precedence&nbsp;if&nbsp;it&nbsp;also<br>
+&nbsp;&nbsp;&nbsp;&nbsp;has&nbsp;a&nbsp;matching&nbsp;attribute.&nbsp;Only&nbsp;used&nbsp;if&nbsp;``formdata``&nbsp;is&nbsp;not<br>
+&nbsp;&nbsp;&nbsp;&nbsp;passed.<br>
+:param&nbsp;extra_filters:&nbsp;A&nbsp;dict&nbsp;mapping&nbsp;field&nbsp;attribute&nbsp;names&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;lists&nbsp;of&nbsp;extra&nbsp;filter&nbsp;functions&nbsp;to&nbsp;run.&nbsp;Extra&nbsp;filters&nbsp;run<br>
+&nbsp;&nbsp;&nbsp;&nbsp;after&nbsp;filters&nbsp;passed&nbsp;when&nbsp;creating&nbsp;the&nbsp;field.&nbsp;If&nbsp;the&nbsp;form<br>
+&nbsp;&nbsp;&nbsp;&nbsp;has&nbsp;``filter_&lt;fieldname&gt;``,&nbsp;it&nbsp;is&nbsp;the&nbsp;last&nbsp;extra&nbsp;filter.<br>
+:param&nbsp;kwargs:&nbsp;Merged&nbsp;with&nbsp;``data``&nbsp;to&nbsp;allow&nbsp;passing&nbsp;existing<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;as&nbsp;parameters.&nbsp;Overwrites&nbsp;any&nbsp;duplicate&nbsp;keys&nbsp;in<br>
+&nbsp;&nbsp;&nbsp;&nbsp;``data``.&nbsp;Only&nbsp;used&nbsp;if&nbsp;``formdata``&nbsp;is&nbsp;not&nbsp;passed.</span></dd></dl>
+
+<hr>
+Readonly properties inherited from <a href="wtforms.form.html#BaseForm">wtforms.form.BaseForm</a>:<br>
+<dl><dt><strong>data</strong></dt>
+</dl>
+<dl><dt><strong>errors</strong></dt>
+</dl>
+<hr>
+Data descriptors inherited from <a href="wtforms.form.html#BaseForm">wtforms.form.BaseForm</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for("static",filename="css/detail.css") }}">
+{% endblock %}
+{% block title %}
+    {{ dmail.subject }}
+{% endblock %}
+
+
+{% block body %}
+    <div class="row" style="margin-top: 20px;">
+        <div class="col"></div>
+        <div class="col-10" style="background-color: #fff;padding: 20px;">
+            <h3 class="page-title">{{ dmail.subject }} {% if dmail.state == '垃圾' %}
+                <a href="#" class="badge badge-warning">垃圾</a>
+                {% else %}
+                <a href="#" class="badge badge-success">正常</a>
+                {% endif %}</h3>
+            <p class="question-info">
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">发件人</span>
+                    </div>
+                    <span class="form-control" style="background-color: #F6F9FC;" aria-label="Username" aria-describedby="basic-addon1">
+                        {{ dmail.nickname }} <{{ dmail.send_addr}}>
+                    </span>
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">收件人</span>
+                    </div>
+                    <span class="form-control" style="background-color: #F6F9FC;" aria-label="Username" aria-describedby="basic-addon1">
+                        {{ dmail.recv_addr }}
+                    </span>
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">时间</span>
+                    </div>
+                    <span class="form-control" style="background-color: #F6F9FC;" aria-label="Username" aria-describedby="basic-addon1">
+                        {{ dmail.time }}
+                    </span>
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">智能概要</span>
+                    </div>
+                    <span class="form-control" style="background-color: #F6F9FC;" aria-label="Username" aria-describedby="basic-addon1">
+                        {{ dmail.messagecategory }}：{{dmail.sum}}
+                    </span>
+                </div>
+            </p>
+            <hr>
+            <div class="question-content">{{ dmail.content|safe }}</div>
+            <hr>
+        </div>
+        <div class="col"></div>
+    </div>
+{% endblock %}

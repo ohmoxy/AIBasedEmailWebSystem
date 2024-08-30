@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for("static",filename="css/index.css") }}">
+    <style>
+    .limited-text-nickname {  
+        max-width: 180px;  
+        min-width: 180px;
+        white-space: nowrap;  
+        overflow: hidden;  
+        text-overflow: ellipsis;  
+    }  
+    .limited-text-subject {  
+        max-width: 250px;  
+        min-width: 150px;
+        white-space: nowrap;  
+        overflow: hidden;  
+        text-overflow: ellipsis;  
+    } 
+    .limited-text-sum {  
+        max-width: 300px;  
+        min-width: 150px;
+        overflow: hidden;  
+        text-overflow: ellipsis;  
+    } 
+    .limited-text-time {  
+        max-width: 200px;  
+        min-width: 100px;
+        white-space: nowrap;  
+        overflow: hidden;  
+    } 
+    </style>
+{% endblock %}
+{% block title %}
+    首页
+{% endblock %}
+{% block body %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class=flashes>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    
+    <div class="row" style="margin-top: 20px;">
+        <div class="col"></div>
+        <div class="">
+            <form method="GET" action="{{ url_for('mlist.search') }}" style="margin-top: 20px;">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">关键词</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Sizing example input" name="key" aria-describedby="inputGroup-sizing-default" value="{{ key }}">
+                </div>
+                {% for category in ["工作", "通知", "推销", "订阅", "账单", "客服", "邀请", "教育", "其他"] %}
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox{{ loop.index }}" name="cate" value="{{ category }}" {% if category in cate %}checked{% endif %}>
+                        <label class="form-check-label" for="inlineCheckbox{{ loop.index }}">{{ category }}</label>
+                    </div>
+                {% endfor %}
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="state" id="exampleRadios1" value="正常" {% if state == "正常" %}checked{% endif %}>
+                    <label class="form-check-label" for="exampleRadios1">
+                        正常
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="state" id="exampleRadios2" value="垃圾" {% if state == "垃圾" %}checked{% endif %}>
+                    <label class="form-check-label" for="exampleRadios2">
+                        垃圾
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block" style="margin-top: 20px;">搜索</button>
+            </form>
+            <form method="POST" action="{{ url_for('mlist.mlist') }}" style="margin-top: 20px;">
+                <button type="submit" class="btn btn-secondary btn-lg btn-block">更新</button>
+            </form>
+            <table class="table table-striped table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">发件人</th>
+                        <th scope="col">主题</th>
+                        <th scope="col">概要</th>
+                        <th scope="col">标签</th>
+                        <th scope="col">状态</th>
+                        <th scope="col">时间</th>
+                        <th scope="col">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for mail in mails %}
+                        <tr>
+                            <th scope="row">{{ loop.index }}</th>
+                            <td class="limited-text-nickname">{{ mail.nickname }}</td>
+                            <td class="limited-text-subject">{{ mail.subject }}</td>
+                            <td class="limited-text-sum">{{ mail.sum }}</td>
+                            <td class="">{{ mail.messagecategory }}</td>
+                            <td class="">
+                                {% if mail.state == '垃圾' %}
+                                <a href="#" class="badge badge-warning">垃圾</a>
+                                {% else %}
+                                <a href="#" class="badge badge-success">正常</a>
+                                {% endif %}
+                            </td>
+                            <td class="limited-text-time">{{ mail.time }}</td>
+                            <td class="">
+                                <a href="/list/detail/{{ mail.mail_id }}" class="btn btn-link btn-sm">详情</a>
+                                <a href="/list/delete/{{ mail.mail_id }}" class="btn btn-danger btn-sm">删除</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col"></div>
+    </div>
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block title %}
+登录 - 小邮分析
+{% endblock %}
+{% block head %}
+    <style>
+        .login-container {
+            width: 300px;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .login-container h2 {
+            text-align: center;
+        }
+        .login-container label {
+            display: block;
+            margin-top: 10px;
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+        .login-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        .login-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script>
+        function login(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const form = document.getElementById('loginForm');
+            const formData = new FormData(form);
+
+            fetch('/login', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                if (data.message === '登录成功!') {
+                    setTimeout(() => {
+                        window.location.href = '/';
+                    }, 2000); // Redirect to home after 2 seconds
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+{% endblock %} 
+{% block body %}
+<div class="container">
+    <div class="row mt-4">
+        <div class="col"></div>
+        <div class="col">
+            <h2>登录</h2>
+            <form id="loginForm" onsubmit="login(event)">
+                <div class="form-group">
+                        <label for="exampleInputEmail1">用户名</label>
+                        <input type="text" class="form-control" id="username" name="username" required>
+                </div>       
+                <div class="form-group">
+                        <label for="exampleInputPassword1">密码:</label>
+                        <input type="password" id="password" class="form-control" name="password" required>
+                </div>
+                <div class="col"></div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">立即登录</button>
+                </div>
+                <div class="form-group">
+                    <p style="float: right;">还没有账户？点此<a href="/login/reg">注册</a></p> 
+                </div>
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
