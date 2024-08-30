@@ -12,7 +12,7 @@ class aitext:
 
 def get_access_token():
     # 获取百度 AI 平台的访问令牌（access token）
-    url = "https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=qrgq8n2p7T2Ztrsp0A50HOVi&client_secret=pIC6f28G1Gj7YazU3pmWguXr4VOHZGEz"
+    url = "https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=#此处换为自己的令牌&client_secret=#同理"
     payload = json.dumps("")
     headers = {
         'Content-Type': 'application/json',
